@@ -19,7 +19,7 @@ class ShopController extends Controller
         }
         //$image = File::get($path);
         //$image = Storage::get('app/shops/'.$filename);
-        $image = Image::make($path)->resize(500,500);
+        $resize = Image::make($path)->resize(500,500);
 
         //$image = Image::make(Storage::get('app/shops/'.$filename));
          //$image->resize(500,500);
@@ -31,9 +31,9 @@ class ShopController extends Controller
         //Storage::disk('app/shops')->put('resized-'.$filename, $image);
         $name ='resized-'.$filename;
        /* $image->save('app/shops/');*/
-        Storage::move($name, 'app/shops/' . $name);
+       // Storage::move($name, 'app/shops/' . $name);
+       $resize->save(public_path('shops'.$name));
 
-        // $store  = Storage::putFile('app/shops', $image);
         return 'Success';
     }
 }
