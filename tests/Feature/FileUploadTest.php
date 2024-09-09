@@ -16,7 +16,6 @@ use Tests\TestCase;
 class FileUploadTest extends TestCase
 {
     use RefreshDatabase;
-/*
     public function test_original_filename_upload()
     {
         $filename = 'logo.jpg';
@@ -95,7 +94,7 @@ class FileUploadTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee(public_path('offices/' . $filename));
     }
-    */
+
         public function test_upload_resize()
         {
             $filename = Str::random(8) . '.jpg';
@@ -110,7 +109,6 @@ class FileUploadTest extends TestCase
             $this->assertEquals(500, $image->width());
             $this->assertEquals(500, $image->height());
         }
-/*
         public function test_spatie_media_library()
         {
             $filename = Str::random(8) . '.jpg';
@@ -126,5 +124,4 @@ class FileUploadTest extends TestCase
             $response->assertStatus(200);
             $response->assertSee('storage/' . $company->id . '/' . $filename);
         }
-        */
 }
